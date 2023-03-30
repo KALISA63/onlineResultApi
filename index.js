@@ -28,6 +28,7 @@ mongoose.connect(process.env.MONGO_URL,
 console.log("Online Result Mgt Sysytem");
 
 app.use(bodyParser.json())
+app.use(cors())
 app.listen("7000", ()=>{
     console.log("my server is running...");
 });
