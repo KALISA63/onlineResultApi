@@ -7,6 +7,7 @@ const adminRoute=require("./routes/admin.js")
 const lectureRoute=require("./routes/lecture.js");
 const studentRoute=require("./routes/student.js");
 const bodyParser = require('body-parser');
+const cors = require('cors')
 const DepartmentRoute = require("./routes/department.js")
 const subjectRoute=require("./routes/subject.js")
 // const subjectRoute=require("./routes/subject");
