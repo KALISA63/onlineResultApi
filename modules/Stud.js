@@ -1,0 +1,69 @@
+const mongoose=require('mongoose');
+const StudentSchema=new mongoose.Schema({
+    firstName:{
+        type:String,
+        require:true,
+    },
+    lastName:{
+        type:String,
+        require:true,
+    },
+    gender:{
+        type:String,
+        require:true,
+    },
+    DoB:{
+        type:String,
+        require:true,
+    },
+    regNum:{
+        type:String,
+        require:true,
+    },
+    bloodGroup:{
+        type:String,
+        require:true,
+    },
+    religion:{
+        type:String,
+        require:false,
+    },
+    email:{
+        type:String,
+        require:true,
+    },
+    class:{
+        type:String,
+        require:true,
+    },
+    section:{
+        type:String,
+        require:true,
+    },
+    admissionId:{
+        type:String,
+        require:false,
+    },
+    phoneNum:{
+        type:String,
+        require:true,
+    },        
+    password:{
+        type:String,
+        required:true,
+    },
+    picture:{
+        type:String,
+        require:true,
+        default:'',
+    },
+    role:{
+        type:String,
+        default:'student',
+    },
+
+})
+
+{timestamp:true}
+
+module.exports=mongoose.model("Student",StudentSchema)
