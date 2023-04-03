@@ -9,7 +9,8 @@ const studentRoute=require("./routes/student.js");
 const bodyParser = require('body-parser');
 const cors = require('cors')
 const DepartmentRoute = require("./routes/department.js")
-const subjectRoute=require("./routes/subject.js")
+const subjectRoute=require("./routes/subject.js");
+const router = require("./routes/auth.js");
 // const subjectRoute=require("./routes/subject");
 // const swaggerUi=require('swagger-ui-express');
 // const swaggerJSDoc= require("swagger-jsdoc");
@@ -43,3 +44,4 @@ app.use("/student", studentRoute);
 
 app.use("/department", DepartmentRoute);
 app.use("/subject",subjectRoute);
+app.use("/user",router);

@@ -5,6 +5,7 @@ const Student=require("../modules/Stud.js")
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const multer = require("multer");
+const { verifyTokenAndLect } = require("../middleware/auth.js");
 // const cloudinary=require('../cap/cloudinary.js')
 // const JWT=require ('jsonwebtoken')
 
@@ -12,25 +13,25 @@ const multer = require("multer");
   
   //Login
   
-  router.post("/login",async(req,res)=>
-    {
-        try{
-            const lecture=await Lecture.findOne({email:req.body.email});
-            !lecture&&res.status(400).json("lecture doesn't exist!");
-            const validated=await bcrypt.compare(req.body.password, lecture.password)
-            !validated&&res.status(400).json("wrong Credential!");
-            const {password, ...others}=lecture._doc;
-            return res.status(200).json(others)
-        }catch(err){
-            console.log(err);
-            return res.status(500).json(err);
-        }
-    });
+  // router.post("/login",async(req,res)=>
+  //   {
+  //       try{
+  //           const lecture=await Lecture.findOne({email:req.body.email});
+  //           !lecture&&res.status(400).json("lecture doesn't exist!");
+  //           const validated=await bcrypt.compare(req.body.password, lecture.password)
+  //           !validated&&res.status(400).json("wrong Credential!");
+  //           const {password, ...others}=lecture._doc;
+  //           return res.status(200).json(others)
+  //       }catch(err){
+  //           console.log(err);
+  //           return res.status(500).json(err);
+  //       }
+  //   });
 
   
   // Lecture edit
 
-  router.patch("/updateById/:id", async (req, res) => {
+  router.patch("/updateById/:id",verifyTokenAndLect, async (req, res) => {
     try {
         // console.log("testing");
       if (req.body.lectId !== req.params.id) {
@@ -68,7 +69,7 @@ const multer = require("multer");
   
   //GET
   
-  router.get("/findById/:id", async (req, res) => {
+  router.get("/findById/:id",verifyTokenAndLect, async (req, res) => {
     try {
       const lecture = await Lecture.findById(req.params.id);
       if (!lecture) {
