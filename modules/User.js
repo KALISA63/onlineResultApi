@@ -16,10 +16,6 @@ const UserSchema=new mongoose.Schema({
         type:String,
         required:true,
     },
-    role:{
-        type:String,
-        required:true,
-    },
     gender:{
         type:String,
         require:true,
@@ -47,6 +43,20 @@ const UserSchema=new mongoose.Schema({
     phoneNum:{
         type:String,
         required:true,
+    },
+    lectId:{
+        type:String,
+        required:false,
+    },
+    studId:{
+        type:String,
+        required:false,
+    },
+
+    role:{
+        type:String,
+        required:false,
+        default:"admin",
     }
 
     
