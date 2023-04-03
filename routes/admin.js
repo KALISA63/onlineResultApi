@@ -12,57 +12,57 @@ const JWT=require ('jsonwebtoken')
 
 //Register
 
-router.post("/register", async (req, res) => {
-    try {
-      const salt = await bcrypt.genSalt(10);
-      const hashedPass = await bcrypt.hash(req.body.password, salt);
-      // console.log(hashedPass)
-      const newAdmin = new Admin({
-        firstName: req.body.firstName,
-        secondName: req.body.secondName,
-        gender: req.body.gender,
-        DoB: req.body.DoB,
-        bloodGroup:req.body.bloodGroup,
-        religion:req.body.religion,
-        phoneNum:req.body.phoneNum,
-        email: req.body.email,
-        password: hashedPass,
-      });
-      const adminEmail = await Admin.find({ email: req.body.email })
+// router.post("/register", async (req, res) => {
+//     try {
+//       const salt = await bcrypt.genSalt(10);
+//       const hashedPass = await bcrypt.hash(req.body.password, salt);
+//       // console.log(hashedPass)
+//       const newAdmin = new Admin({
+//         firstName: req.body.firstName,
+//         secondName: req.body.secondName,
+//         gender: req.body.gender,
+//         DoB: req.body.DoB,
+//         bloodGroup:req.body.bloodGroup,
+//         religion:req.body.religion,
+//         phoneNum:req.body.phoneNum,
+//         email: req.body.email,
+//         password: hashedPass,
+//       });
+//       const adminEmail = await Admin.find({ email: req.body.email })
 
-      if(adminEmail.length!==0){
+//       if(adminEmail.length!==0){
   
-        return res.status(402).json("Pls, register with difference Email!");
-      }
-      else{
-        const admin = await newAdmin.save();
-        return res.status(200).json(admin);
-      }
-    } catch (err) {
-      console.log(err);
-      return res.status(500).json(err);
-    }
-  });
+//         return res.status(402).json("Pls, register with difference Email!");
+//       }
+//       else{
+//         const admin = await newAdmin.save();
+//         return res.status(200).json(admin);
+//       }
+//     } catch (err) {
+//       console.log(err);
+//       return res.status(500).json(err);
+//     }
+//   });
   
   
   
   //Login
 
 
-  router.post("/login",async(req,res)=>
-    {
-        try{
-            const admin=await Admin.findOne({email:req.body.email});
-            !admin&&res.status(400).json("admin doesn't exist!");
-            const validated=await bcrypt.compare(req.body.password, admin.password)
-            !validated&&res.status(400).json("wrong Credential!");
-            const {password, ...others}=admin._doc;
-            return res.status(200).json(others)
-        }catch(err){
-            console.log(err);
-            return res.status(500).json(err);
-        }
-    });
+  // router.post("/login",async(req,res)=>
+  //   {
+  //       try{
+  //           const admin=await Admin.findOne({email:req.body.email});
+  //           !admin&&res.status(400).json("admin doesn't exist!");
+  //           const validated=await bcrypt.compare(req.body.password, admin.password)
+  //           !validated&&res.status(400).json("wrong Credential!");
+  //           const {password, ...others}=admin._doc;
+  //           return res.status(200).json(others)
+  //       }catch(err){
+  //           console.log(err);
+  //           return res.status(500).json(err);
+  //       }
+  //   });
     
   
   //admin edit

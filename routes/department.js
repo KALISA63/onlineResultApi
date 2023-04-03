@@ -8,7 +8,7 @@ const multer = require("multer");
 // const cloudinary=require('../cap/cloudinary.js')
 // const JWT=require ('jsonwebtoken')
 // const cloudinary=require('../cap/cloudinary.js')
-// const JWT=require ('jsonwebtoken')
+const JWT=require ('jsonwebtoken')
 
 
 // REGISTER DEPARTMENT

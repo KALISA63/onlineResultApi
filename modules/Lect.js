@@ -1,5 +1,9 @@
 const mongoose=require('mongoose');
 const LectureSchema=new mongoose.Schema({
+    lectId:{
+        type:String,
+        require:true,
+    },
     firstName:{
         type:String,
         require:true,
@@ -8,10 +12,18 @@ const LectureSchema=new mongoose.Schema({
         type:String,
         require:true,
     },
-    // lectId:{
-    //     type:String,
-    //     require:true,
-    // },
+    email:{
+        type:String,
+        require:true,
+    },
+    password:{
+        type:String,
+        required:true,
+    },
+    phoneNum:{
+        type:String,
+        require:true,
+    },        
     gender:{
         type:String,
         require:true,
@@ -27,18 +39,6 @@ const LectureSchema=new mongoose.Schema({
     religion:{
         type:String,
         require:false,
-    },
-    email:{
-        type:String,
-        require:true,
-    },
-    phoneNum:{
-        type:String,
-        require:true,
-    },        
-    password:{
-        type:String,
-        required:true,
     },
     picture:{
         type:String,

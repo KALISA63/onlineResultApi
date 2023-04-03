@@ -1,9 +1,5 @@
 const mongoose=require('mongoose');
-const StudentSchema=new mongoose.Schema({
-    regNum:{
-        type:String,
-        require:true,
-    },
+const UserSchema=new mongoose.Schema({
     firstName:{
         type:String,
         require:true,
@@ -15,15 +11,15 @@ const StudentSchema=new mongoose.Schema({
     email:{
         type:String,
         require:true,
-    },
+    },        
     password:{
         type:String,
         required:true,
     },
-    phoneNum:{
+    role:{
         type:String,
-        require:true,
-    },        
+        required:true,
+    },
     gender:{
         type:String,
         require:true,
@@ -44,26 +40,13 @@ const StudentSchema=new mongoose.Schema({
         type:String,
         require:true,
     },
-    class:{
+    course:{
         type:String,
         require:true,
     },
-    // admissionId:{
-    //     type:String,
-    //     require:false,
-    // },
-    picture:{
-        type:String,
-        require:true,
-        default:'',
-    },
-    role:{
-        type:String,
-        default:'student',
-    },
 
-})
+    
+},{timestamp:true})
 
-{timestamp:true}
 
-module.exports=mongoose.model("Student",StudentSchema)
+module.exports=mongoose.model("User",UserSchema)

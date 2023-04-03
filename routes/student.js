@@ -6,25 +6,26 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const multer = require("multer");
 // const cloudinary=require('../cap/cloudinary.js')
-// const JWT=require ('jsonwebtoken')
+const JWT=require ('jsonwebtoken')
 
 
   //Student Login
 
-  router.post("/login",async(req,res)=>
-    {
-        try{
-            const student=await Student.findOne({email:req.body.email});
-            !student&&res.status(400).json("student doesn't exist!");
-            const validated=await bcrypt.compare(req.body.password, student.password)
-            !validated&&res.status(400).json("wrong Credential!");
-            const {password, ...others}=student._doc;
-            return res.status(200).json(others)
-        }catch(err){
-            console.log(err);
-            return res.status(500).json(err);
-        }
-    });
+  // router.post("/login",async(req,res)=>
+  //   {
+  //       try{
+  //           const student=await Student.findOne({email:req.body.email});
+  //           !student&&res.status(400).json("student doesn't exist!");
+  //           const validated=await bcrypt.compare(req.body.password, student.password)
+  //           !validated&&res.status(400).json("wrong Credential!");
+  //           const {password, ...others}=student._doc;
+  //           const token = JWT.sign(student._id,process.env.SECRET_KEY)
+  //           return res.status(200).json(others)
+  //       }catch(err){
+  //           console.log(err);
+  //           return res.status(500).json(err);
+  //       }
+  //   });
     
   
   //Student Edit
