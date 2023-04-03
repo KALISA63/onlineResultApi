@@ -28,10 +28,10 @@ const LectureSchema=new mongoose.Schema({
         type:String,
         require:true,
     },
-    DoB:{
-        type:String,
-        require:true,
-    },
+    // DoB:{
+    //     type:String,
+    //     require:true,
+    // },
     bloodGroup:{
         type:String,
         require:true,
